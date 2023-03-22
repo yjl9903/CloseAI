@@ -1,9 +1,10 @@
 {
   "name": "closeai",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "deploy": "wrangler publish",
+    "release": "bumpp package.json --commit --push --tag",
     "start": "wrangler dev",
     "test": "vitest"
   },
