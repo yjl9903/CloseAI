@@ -13,6 +13,10 @@ const configuration = new Configuration({
 })
 ```
 
+## Inspiration
+
+[justjavac/openai-proxy](https://github.com/justjavac/openai-proxy): OpenAI/ChatGPT 免翻墙代理.
+
 ## License
 
 MIT License © 2023 [XLor](https://github.com/yjl9903)
