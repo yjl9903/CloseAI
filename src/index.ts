@@ -1,13 +1,3 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `wrangler dev src/index.ts` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `wrangler publish src/index.ts --name my-worker` to publish your worker
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
-
 export interface Env {
   // Example binding to KV. Learn more at https://developers.cloudflare.com/workers/runtime-apis/kv/
   // MY_KV_NAMESPACE: KVNamespace;
@@ -28,7 +18,19 @@ export default {
     _ctx: ExecutionContext
   ): Promise<Response> {
     const url = new URL(request.url);
-    url.host = OPENAI_API_HOST;
-    return await fetch(url, request);
+
+    if (url.pathname === '/') {
+      return new Response(
+        'This is CloseAI (https://github.com/yjl9903/CloseAI)',
+        {
+          headers: {
+            'content-type': 'text/plain;charset=UTF-8',
+          },
+        }
+      );
+    } else {
+      url.host = OPENAI_API_HOST;
+      return await fetch(url, request);
+    }
   },
 };
