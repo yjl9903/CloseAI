@@ -17,6 +17,13 @@ const configuration = new Configuration({
 })
 ```
 
+## Deploy
+
+```bash
+pnpm install
+pnpm run deploy
+```
+
 ## Inspiration
 
 + [justjavac/openai-proxy](https://github.com/justjavac/openai-proxy): OpenAI/ChatGPT 免翻墙代理.
