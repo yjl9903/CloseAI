@@ -8,6 +8,9 @@
     "start": "wrangler dev",
     "test": "vitest"
   },
+  "dependencies": {
+    "reflare": "^1.1.1"
+  },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230321.0",
     "typescript": "^5.0.2",

@@ -1,3 +1,5 @@
+import useReflare from 'reflare';
+
 export interface Env {
   // Example binding to KV. Learn more at https://developers.cloudflare.com/workers/runtime-apis/kv/
   // MY_KV_NAMESPACE: KVNamespace;
@@ -21,7 +23,7 @@ export default {
 
     if (url.pathname === '/') {
       return new Response(
-        'This is CloseAI (https://github.com/yjl9903/CloseAI)',
+        '[CloseAI](https://github.com/yjl9903/CloseAI) is an OpenAI proxy cloudflare worker.',
         {
           headers: {
             'content-type': 'text/plain;charset=UTF-8',
@@ -29,8 +31,17 @@ export default {
         }
       );
     } else {
-      url.host = OPENAI_API_HOST;
-      return await fetch(url, request);
+      const reflare = await useReflare();
+
+      reflare.push({
+        path: '/*',
+        upstream: {
+          domain: OPENAI_API_HOST,
+          protocol: 'https',
+        },
+      });
+
+      return reflare.handle(request);
     }
   },
 };
