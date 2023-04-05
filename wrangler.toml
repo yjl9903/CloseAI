@@ -1,3 +1,7 @@
 name = "closeai"
 main = "src/index.ts"
 compatibility_date = "2023-03-22"
+
+kv_namespaces = [
+  { binding = "apikey", id = "542f484409774f16b00f3b577fd60873", preview_id = "800c78dfed374818b585b2167b498d92" }
+]

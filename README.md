@@ -2,9 +2,14 @@
 
 OpenAI proxy cloudflare worker.
 
+## Features
+
++ Proxy OpenAI API endpoints
++ Support API key mask
+
 ## Usage
 
-Use `https://closeai.onekuma.cn/`.
+Use `https://closeai.onekuma.cn/` or your deployed worker domain.
 
 Or use in [openai](https://www.npmjs.com/package/openai) module.
 
@@ -15,6 +20,13 @@ const configuration = new Configuration({
   apiKey: OPENAI_API_KEY,
   basePath: 'https://closeai.onekuma.cn/v1'
 })
+```
+
+## API key mask
+
+```bash
+$ curl -X POST -H "Content-Type: application/json" -d '{"key": "sk-<your original api key>"}' https://closeai.onekuma.cn/_/key
+{"key":"sk-<your generated api key>"}
 ```
 
 ## Deploy

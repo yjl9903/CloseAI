@@ -5,7 +5,7 @@
   "scripts": {
     "deploy": "wrangler publish",
     "release": "bumpp package.json --commit --push --tag",
-    "start": "wrangler dev",
+    "dev": "wrangler dev",
     "test": "vitest"
   },
   "dependencies": {
