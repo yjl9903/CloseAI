@@ -24,8 +24,12 @@ const configuration = new Configuration({
 
 ## API key mask
 
+Generate a new CloseAI API key to replace the usage of the original OpenAI API key, so that you can use the generated key instead of the original one to avoid the leak of your real API key.
+
 ```bash
-$ curl -X POST -H "Content-Type: application/json" -d '{"key": "sk-<your original api key>"}' https://closeai.onekuma.cn/_/key
+$ curl -X POST -H "Content-Type: application/json" \
+       -d '{"key": "sk-<your original api key>"}' \
+       https://closeai.onekuma.cn/_/key
 {"key":"sk-<your generated api key>"}
 ```
 
