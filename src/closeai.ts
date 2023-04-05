@@ -27,19 +27,30 @@ export async function handleCloseAI(
   }
 }
 
+const cacheKey = new Map<string, string>();
+
 export async function generateKey(env: Env, original: string) {
   const generated = `sk-${randomString(48)}`;
   await env.apikey.put(`key/${generated}`, original);
+  cacheKey.delete(generated);
   return generated;
 }
 
 export async function getOriginalKey(env: Env, key: string) {
   if (key.startsWith('Bearer ')) {
-    const original = await env.apikey.get(`key/${key.slice(7)}`);
-    if (original) {
-      return `Bearer ${original}`;
+    const generated = key.slice(7);
+    if (cacheKey.has(generated)) {
+      return cacheKey.get(generated)!;
     } else {
-      return key;
+      const original = await env.apikey.get(`key/${generated}`);
+      if (original) {
+        const o = `Bearer ${original}`;
+        cacheKey.set(generated, o);
+        return o;
+      } else {
+        cacheKey.set(generated, key);
+        return key;
+      }
     }
   } else {
     return key;
