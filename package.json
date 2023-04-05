@@ -12,10 +12,10 @@
     "reflare": "^1.1.1"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20230321.0",
-    "typescript": "^5.0.2",
-    "vitest": "^0.29.7",
-    "wrangler": "2.13.0"
+    "@cloudflare/workers-types": "^4.20230404.0",
+    "typescript": "^5.0.3",
+    "vitest": "^0.29.8",
+    "wrangler": "2.14.0"
   },
-  "packageManager": "pnpm@7.30.0"
+  "packageManager": "pnpm@8.1.1"
 }
